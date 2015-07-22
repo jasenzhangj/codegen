@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project name="codegen" basedir="." default="code_genernation" xmlns:artifact="urn:maven-artifact-ant">
+
+	<!-- <property name="bizProjectDir" value="../hitaoboss-biz"/>
+	<property name="dalProjectDir" value="${basedir}"/>  
+	<property name="webProjectDir" value="../hitaoboss-web"/> -->
+	
+	<property name="lib" value="lib"/>
+	<property name="configDir" value="${basedir}"/>
+	<property name="dalRootDir" value="${basedir}"/>
+	
+	<path id="libs">
+		<fileset dir="${lib}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<dirset dir="${configDir}">
+		</dirset>
+	</path>
+
+
+	<target name="code_genernation">
+		<taskdef classpathref="libs" name="dao-generation" classname="com.hitao.codegen.access.impl.CodeGenByProjectNameAnt"/>
+		<dao-generation dalRootDir="${dalRootDir}"/>
+	</target>
+</project>

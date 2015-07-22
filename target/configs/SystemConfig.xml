@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<configs>
+	<!--加载配置文件路径-->
+	<config name="codegen.config.path" value=":local:" />
+
+	<!--加载xml配置文件目录，如果不用xml文件配置，则无需配置	-->
+<!-- 	<config name="codegen.default.config.indirectory" value="hitao"  /> -->
+
+	<!--实现类名称的前缀(例如DefaultUserDaoImpl Default为前缀 Impl为后缀)	-->
+	<!--<config name="codegen.dao.implement.name.prefix" value="Default" />-->
+	<config name="codegen.dao.implement.name.suffix" value="Impl" />
+
+	<!--代码生成的源目录-->
+	<config name="codegen.project.source.folder" value="src.main.java" />
+	<!--UnitTest代码生成的源目录-->
+	<config name="codegen.project.unittest.source.folder" value="src.test.java" />
+	<!--web工程的自动生成配置文件目录 (*-ao.xml.vm, *-dao.xml.vm,*-manager.xml.vm)-->
+	<config name="codegen.web.project.autoconfig.folder" value="src.main.resources.biz" />
+	<!--web工程中的sqlmap配置文件目录-->
+	<config name="codegen.web.project.ibatis.sqlmap.config.dir" value="src.main.resources" />
+	<!--web工程中的sqlmap配置文件名称(sql-map.xml), 自动生成代码后，会自动添加salmap-->
+	<config name="codegen.web.project.ibatis.sqlmap.config.name" value="sqlmap-config.xml" />
+	<!--webx 框架配置文件的字符编码-->
+	<config name="codegen.config.file.encoding" value="GB2312" />
+	
+	<!--生成接口或类时的默认后缀-->
+	<config name="codegen.dao.dao.suffix" value="DAO" />
+	<config name="codegen.dao.manager.suffix" value="Manager" />
+	<config name="codegen.dao.ao.suffix" value="AO" />
+	<config name="codegen.dao.do.suffix" value="DO" />
+
+	<!--默认生产成DAO、Manager、AO、DO、SQL map的相对目录。-->
+	<config name="codegen.dao.package.path" value=".dal.dao." />
+	<config name="codegen.manager.package.path" value=".biz.manager." />
+	<config name="codegen.ao.package.path" value=".biz.ao." />
+	<config name="codegen.do.package.path" value=".dal.dataobject." />
+	<config name="codegen.sqlmap.package.path" value=".sqlmap.home." />
+	
+	<!--项目名称，此名称会加是SQL map 文件名的前缀. SQL map 文件名格式: projectName_DAOName(DAO后缀不包含)_sqlmap.xml-->
+<!-- 	<config name="codegen.project.name" value="hitao" /> -->
+	
+	<!--在web工程下autoconf目录下的AO, DAO, Manager的spring配置文件名-->
+	<config name="codegen.web.project.dao.config.name" value="dal-dao.xml" />
+	<config name="codegen.web.project.manager.config.name" value="biz-manager.xml" />
+	<config name="codegen.web.project.ao.config.name" value="biz-ao.xml" />
+
+	<!--实现类和接口的相对目录名称-->
+	<config name="codegen.dao.impl.relative.directory" value="impl" />
+	
+	<!--是否在方法参数前加上arg-->
+	<config name="codegen.parameter.name.prefix.arg" value="false" />
+
+	<!--是否为get和set方法生成注释说明-->
+	<config name="codegen.generate.set.and.get.comments" value="true" />
+
+	<!--默认生成类的modify-->
+	<config name="codegen.class.defaul.modify" value="public" />
+	<!--默认生成方法的modify-->
+	<config name="codegen.method.defaul.modify" value="public" />
+	<!--默认生成属性的modify-->
+	<config name="codegen.field.defaul.modify" value="private" />
+
+	<!--是否使用当前eclipse的默认格式化-->
+	<config name="codegen.use.default.eclipse.formatter" value="true" />
+
+	<!--如果生成的文件已经存在，是否覆盖原有的生成文件，默认配置false。目前版本还没有实现代码自动增加功能，请不要修改，以免丢失自己所写编码。-->
+	<config name="codegen.generate.code.pattern.override" value="false" />
+
+	<!--如果不适用eclipse的默认格式化，则使用配置文件的配置来格式化代码 -->
+	<config name="codegen.code.formatter.file" value="codeformatter.properties" />
+
+	<!--默认的DaoImpl必须继承的类 -->
+	<config name="codegen.dao.daoimpl.default.extends.class" value="com.hitao.erp.dal.dao.common.persistence.HitaoSqlMapBaseDAO" />
+	<!--默认的DaoImpl必须继承的类是以DO作为泛型参数 -->
+	<config name="codegen.dao.daoimpl.default.extends.class.has.generic" value="true" />
+	<!--默认的Dao unit test必须继承的类 -->
+	<config name="codegen.dao.dao.unittest.default.extends.class" value="com.hitao.erp.dal.BaseDAOTest" />
+	<!--默认的DaoImpl方法中所使用的DBroute，该类必须是静态类 -->
+	<config name="codegen.dao.daoimpl.dbroute.static.class" value="com.hitao.erp.common.common.DBRouteConstants.COMMON_DB_ROUTE" />
+
+	<!--默认添加的异常类 ，如果添加多个异常，则用逗号分隔-->
+	<config name="codegen.dao.default.exception" value="com.taobao.common.dao.persistence.exception.DAOException" />
+	<config name="codegen.manager.default.exception" value="com.taobao.biz.core.ManagerException" />
+	
+	<!--是否生成Manager以及ManagerImpl-->
+	<config name="codegen.generate.manager.and.managerimpl" value="true" />
+	<!--是否生成AO以及AOImpl-->
+	<config name="codegen.generate.ao.and.aoimpl" value="true" />
+
+	<!--不需要导入的类,请不要随便修改-->
+	<config name="codegen.unneed.import.classes" value="com.hitao.codegen.configs.dao.annotation.*" />
+	<!--是否保留DAO上的@DAO和@DO 声明-->
+	<config name="codegen.hold.annotations.for.dao" value="false" />
+	<!--是否在有接口实现类上加注释-->
+	<config name="codegen.hold.comments.for.implements" value="false" />
+
+	<!--生成code的策略，默认使用annotation的策略(com.hitao.codegen.access.impl.AnnotationDaoGenStrategy)，还可以使用XML配置的策略 (com.hitao.codegen.access.impl.XmlDaoGenStrategy)-->
+	<config name="com.hitao.codegen.access.IDaoGenStrategy" value="com.hitao.codegen.access.impl.AnnotationDaoGenStrategy" />
+	<config name="codegen.dao.configs.config.class" value="com.hitao.codegen.expand.ErpDaoConfigs" />
+	
+	<config name="codegen.ao.log.logger.class" value="org.slf4j.Logger" />
+	<config name="codegen.ao.log.loggerfactory.class" value="org.slf4j.LoggerFactory" />
+	
+	<!--根据方法返回类型的所生成的具体代码 DAOImpl -->
+	<config name="codegen.dao.daoimpl.returntype.void" >
+		//Auto-generated method stub by code generation framework.
+	</config>
+	<config name="codegen.dao.daoimpl.returntype.int" >
+		return executeUpdate("${sqlName}",${param0}, ${dbroute});
+	</config>
+	<config name="codegen.dao.daoimpl.returntype.Integer" >
+		return executeUpdate("${sqlName}",${param0}, ${dbroute});
+	</config>
+	<config name="codegen.dao.daoimpl.returntype.Long" >
+		return (Long) executeInsert("${sqlName}",${param0}, ${dbroute});
+	</config>
+	<config name="codegen.dao.daoimpl.returntype.List" >
+		return executeQueryForList("${sqlName}",${param0}, ${dbroute});
+	</config>
+	<config name="codegen.dao.daoimpl.returntype.IPageList" >
+		return executeQueryForPagination("${sqlName}",
+				${param0}, ${param1}, ${param2}, ${dbroute});
+	</config>
+
+	<!--根据方法返回类型的所生成的具体代码 ManagerImpl -->
+	<config name="codegen.dao.managerimpl.returntype.default" >
+		try {
+			return ${dao}.${method};
+		} catch (DAOException e) {
+			throw new ManagerException(e);
+		}
+	</config>
+	<config name="codegen.dao.managerimpl.returntype.void" >
+		try {
+			${dao}.${method};
+		} catch (DAOException e) {
+			throw new ManagerException(e);
+		}
+	</config>	
+
+	<!--根据方法返回类型的所生成的具体代码AoImpl -->
+	<config name="codegen.dao.aoimpl.returntype.default" >
+		try {
+			return ${manager}.${method};
+		} catch (${exceptionName} e) {
+			${logger}.error("${methodComment}出现异常", e);
+		}
+			return ${defaultReturnValue};
+	</config>
+	<config name="codegen.dao.aoimpl.returntype.void" >
+		try {
+			${manager}.${method};
+		} catch (${exceptionName} e) {
+			${logger}.error("${methodComment}出现异常", e);
+		}
+	</config>
+	
+	<!--数据源配置信息-->
+	<config name="connection-url" value="jdbc:mysql://10.5.145.131:3306/shopware" />
+	<config name="driver-class" value="net.sourceforge.jtds.jdbc.Driver" />
+	<config name="user-name" value="hitao" />
+	<config name="password" value="hitao" />
+	<config name="min-pool-size" value="1" />
+	<config name="max-pool-size" value="5" />
+	<config name="metadata" value="mysql" />
+</configs>
+
+

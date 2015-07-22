@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.hitao.com/codegen" xmlns="http://www.hitao.com/codegen"
+	elementFormDefault="qualified">
+
+	<xsd:attributeGroup name="name_class">
+		<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="class" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="genericType" type="xsd:string" use="optional"></xsd:attribute>
+		<xsd:attribute name="concreteClass" type="xsd:string" use="optional"></xsd:attribute>
+	</xsd:attributeGroup>
+
+	<xsd:attributeGroup name="parameter_attribute">
+		<xsd:attribute name="modify" type="xsd:string" use="optional"></xsd:attribute>
+		<xsd:attributeGroup ref="name_class"></xsd:attributeGroup>
+	</xsd:attributeGroup>
+
+	<xsd:attributeGroup name="field_attribute">
+		<xsd:attribute name="value" type="xsd:string" use="optional"
+			default="null"></xsd:attribute>
+		<xsd:attributeGroup ref="parameter_attribute"></xsd:attributeGroup>
+	</xsd:attributeGroup>
+
+
+	<xsd:attributeGroup name="interface_class_attribute">
+		<xsd:attribute name="modify" type="xsd:string" use="optional"
+			default="public"></xsd:attribute>
+		<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="package" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="extends" type="xsd:string" use="optional"></xsd:attribute>
+		<xsd:attribute name="genericType" type="xsd:string" use="optional"></xsd:attribute>
+		<xsd:attribute name="concreteClass" type="xsd:string" use="optional"></xsd:attribute>
+	</xsd:attributeGroup>
+
+	<xsd:attributeGroup name="implement_class_attribute">
+		<xsd:attribute name="modify" type="xsd:string" use="optional"
+			default="public"></xsd:attribute>
+		<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="package" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="extends" type="xsd:string" use="optional"></xsd:attribute>
+		<xsd:attribute name="implements" type="xsd:string" use="optional"></xsd:attribute>
+		<xsd:attribute name="genericType" type="xsd:string" use="optional"></xsd:attribute>
+		<xsd:attribute name="concreteClass" type="xsd:string" use="optional"></xsd:attribute>
+	</xsd:attributeGroup>
+
+	<xsd:attributeGroup name="method_attribute">
+		<xsd:attribute name="modify" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="returnType" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+		<xsd:attribute name="override" type="xsd:boolean" use="optional"></xsd:attribute>
+	</xsd:attributeGroup>
+
+
+	<xsd:element name="field">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="comment" maxOccurs="1" minOccurs="0"></xsd:element>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="field_attribute"></xsd:attributeGroup>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="parameter">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="comment" maxOccurs="1"></xsd:element>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="parameter_attribute"></xsd:attributeGroup>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="throwException">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element ref="comment" minOccurs="0" maxOccurs="1"></xsd:element>
+			</xsd:all>
+			<xsd:attribute name="class" use="required"></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="body" type="xsd:string" />
+
+	<xsd:element name="method">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="comment" maxOccurs="1" minOccurs="0"></xsd:element>
+				<xsd:element ref="parameter" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+				<xsd:element ref="throwException" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+				<xsd:element ref="body" maxOccurs="1" minOccurs="0"></xsd:element>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="method_attribute"></xsd:attributeGroup>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="comment" type="xsd:string" />
+
+	<xsd:element name="import">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="importblock" type="xsd:string" />
+
+	<xsd:complexType name="implement_class">
+			<xsd:sequence>
+				<xsd:element ref="import" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+				<xsd:element ref="importblock" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+				<xsd:element ref="comment" maxOccurs="1" minOccurs="0"></xsd:element>
+				<xsd:element ref="field" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+				<xsd:element ref="method" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="implement_class_attribute"></xsd:attributeGroup>
+	</xsd:complexType>
+
+	<xsd:complexType name="interface_class">
+			<xsd:sequence>
+				<xsd:element ref="import" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+				<xsd:element ref="importblock" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+				<xsd:element ref="comment" maxOccurs="1" minOccurs="0"></xsd:element>
+				<xsd:element ref="field" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+				<xsd:element ref="method" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="interface_class_attribute"></xsd:attributeGroup>
+	</xsd:complexType>
+
+	<xsd:element name="dao" type="interface_class" />
+	<xsd:element name="daoimpl" type="implement_class" />
+	<xsd:element name="manager" type="interface_class" />
+	<xsd:element name="managerimpl" type="implement_class" />
+	<xsd:element name="ao" type="interface_class" />
+	<xsd:element name="aoimpl" type="implement_class" />
+	<xsd:element name="do" type="implement_class" />
+	<xsd:element name="class" type="implement_class" />
+
+	<xsd:element name="daogen">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="dao" minOccurs="1" maxOccurs="1"></xsd:element>
+				<xsd:element ref="daoimpl" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element ref="manager" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element ref="managerimpl" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element ref="ao" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element ref="aoimpl" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element ref="do" minOccurs="0" maxOccurs="1"></xsd:element>
+				<xsd:element ref="class" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="codegen">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="daogen" maxOccurs="unbounded"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

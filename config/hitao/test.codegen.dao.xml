@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codegen xmlns="http://www.hitao.com/codegen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.hitao.com/codegen ../../src/codegen.xsd ">
+	<daogen>
+		<dao name="UserOperationLogDAO&lt;E extends UserOperationLogDO &gt;"
+			package="com.taobao.hitao.camel.dao.log">
+			<import>com.taobao.hitao.camel.dataobject.log.UserOperationLogDO</import>
+			<comment>增加用户操作管理接口</comment>
+			<method modify="public" name="addUserOperationLog" returnType="int">
+				<comment>增加用户操作日志</comment>
+				<parameter
+					class="E"
+					name="argUserOperationLogDO">
+					<comment>日志信息对象</comment>
+				</parameter>
+				<throwException
+					class="com.taobao.common.dao.persistence.exception.DAOException">
+					<comment>dao异常</comment>
+				</throwException>
+			</method>
+		</dao>
+
+<!--		<manager package="com.taobao.hitao.camel.biz.manager.log"-->
+<!--			name="UserOperationLogManager&lt;E extends UserOperationLogDO&gt;">-->
+<!--			<import>com.hitao.codegen.UserOperationLogDO</import>-->
+<!--			<comment>用户操作日志管理</comment>-->
+<!--			<method modify="public" name="addUserOperationLog" returnType="int">-->
+<!--				<comment>增加用户操作日志</comment>-->
+<!--				<parameter class="E" name="argUserOperationLogDO">-->
+<!--					<comment>日志信息对象</comment>-->
+<!--				</parameter>-->
+<!--			</method>-->
+<!--		</manager>-->
+
+<!--		<managerimpl package="com.taobao.hitao.camel.biz.manager.log.impl"-->
+<!--			name="UserOperationLogManager" implements="com.taobao.hitao.camel.biz.manager.log.UserOperationLogManager&lt;DefaultUserOperationLogDO&gt; ">-->
+<!--			<import>com.taobao.hitao.camel.biz.manager.log.UserOperationLogManager</import>-->
+<!--			<import>com.taobao.common.dao.persistence.exception.DAOException</import>-->
+<!--			<comment>用户操作日志管理</comment>-->
+<!--			<field name="log" class="org.apache.commons.logging.Log"></field>-->
+<!--			<field name="userOperationLogDAO"-->
+<!--				class="com.taobao.hitao.camel.dao.log.UserOperationLogDAO"></field>-->
+<!--			<method modify="public" name="addUserOperationLog" returnType="int">-->
+<!--				<comment>增加用户操作日志</comment>-->
+<!--				<parameter-->
+<!--					class="com.taobao.hitao.camel.dataobject.log.DefaultUserOperationLogDO"-->
+<!--					name="argUserOperationLogDO">-->
+<!--					<comment>日志信息对象</comment>-->
+<!--				</parameter>-->
+<!--				<body>-->
+<!--				<![CDATA[-->
+<!--				try {-->
+<!--					return userOperationLogDAO-->
+<!--							.addUserOperationLog(argUserOperationLogDO);-->
+<!--				} catch (DAOException e) {-->
+<!--					log.error("插入日志异常:"+argUserOperationLogDO,e);-->
+<!--				}-->
+<!--				return 0;-->
+<!--				]]>-->
+<!--				</body>-->
+<!--			</method>-->
+<!--		</managerimpl>-->
+<!---->
+		<do package="com.taobao.hitao.camel.dataobject.log" name="DefaultUserOperationLogDO"
+			table="hitao_user_test">
+			<comment>用户操作日志DO</comment>
+<!--			<field name="id" class="long" modify="private">-->
+<!--				<comment>日志ID</comment>-->
+<!--			</field>-->
+<!--			<field name="userId" class="long" modify="private">-->
+<!--				<comment>用户ID</comment>-->
+<!--			</field>-->
+<!--			<field name="userName" class="String" modify="private">-->
+<!--				<comment>用户名称</comment>-->
+<!--			</field>-->
+<!--			<field name="operationType" class="int" modify="private" value="2;">-->
+<!--				<comment>用户操作类型</comment>-->
+<!--			</field>-->
+<!--			<field name="itemId" class="String" modify="private">-->
+<!--				<comment>用户操作实例ID</comment>-->
+<!--			</field>-->
+<!--			<field name="opertaionDate" class="java.util.Date" modify="private"-->
+<!--				value="new Date()">-->
+<!--				<comment>用户操作日期</comment>-->
+<!--			</field>-->
+<!--			<field name="ipAddress" class="String" modify="private"-->
+<!--				value="&quot;zhangjun&quot;">-->
+<!--				<comment>用户Ip地址</comment>-->
+<!--			</field>-->
+		</do>
+
+	</daogen>
+</codegen>
