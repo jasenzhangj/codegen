@@ -9,6 +9,7 @@
 	<property name="configDir" value="${basedir}"/>
 	<property name="dalRootDir" value="${basedir}"/>
 	<property name="aaalRootDir" value="${basedir}"/>
+	<property name="bblRootDir" value="${basedir}"/>
 	
 	<path id="libs">
 		<fileset dir="${lib}">
